@@ -50,7 +50,7 @@
       "java": {
         "package": "cdk.cloudfront.geo.locator",
         "maven": {
-          "groupId": "cdk.cloudfront.geo.locator",
+          "groupId": "io.github.ilkrklc",
           "artifactId": "cdk.cloudfront.geo.locator"
         }
       },
