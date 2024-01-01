@@ -32,7 +32,7 @@ jobs:
         run: npm run package
 
       - name: Publish
-        run: npm run publish
+        run: npm run publib
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
