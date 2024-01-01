@@ -55,6 +55,6 @@ jobs:
       - name: Publish to Golang
         run: npm run publish:golang
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           GIT_USER_NAME: ilkrklc
           GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
