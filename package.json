@@ -38,7 +38,7 @@
     "test:destroy": "cdk destroy --app \"npx ts-node test/bin/test.ts\" TestStack --force",
     "prepackage": "npm run build && npm run build --prefix lambda",
     "package": "jsii-pacmak -v",
-    "publish": "publib"
+    "publib": "publib"
   },
   "jsii": {
     "outdir": "dist",
