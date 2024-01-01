@@ -58,3 +58,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           GIT_USER_NAME: ilkrklc
           GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
+          GIT_BRANCH: golang
