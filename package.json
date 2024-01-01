@@ -5,7 +5,8 @@
   "license": "MIT",
   "author": {
     "name": "Ilker Kilic",
-    "email": "ilkrklc@gmail.com"
+    "email": "ilkrklc@gmail.com",
+    "url": "https://github.com/ilkrklc"
   },
   "homepage": "https://github.com/ilkrklc/cdk-cloudfront-geo-locator",
   "repository": {
