@@ -1,7 +1,5 @@
 # CloudfrontGeoLocator ![GitHub](https://img.shields.io/github/license/ilkrklc/cdk-cloudfront-geo-locator) ![npm version](https://img.shields.io/npm/v/cdk-cloudfront-geo-locator)
 
-## Description
-
 The `CloudfrontGeoLocator` is an AWS CDK construct that automates the setup of a CloudFront distribution with an Origin Request Lambda function, enabling applications to determine the geolocation of their users based on incoming HTTP requests. It's an ideal solution for developers looking to enhance their cloud applications with geolocation awareness without delving into the complexities of AWS configurations.
 
 ## Table of Contents
