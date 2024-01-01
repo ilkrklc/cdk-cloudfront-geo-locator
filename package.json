@@ -1,27 +1,84 @@
 {
   "name": "cdk-cloudfront-geo-locator",
+  "description": "An AWS CDK construct to create a CloudFront-powered HTTP endpoint delivering requestor's geolocation details.",
   "version": "0.1.0",
-  "bin": {
-    "cdk-cloudfront-geo-locator": "bin/cdk-cloudfront-geo-locator.js"
+  "license": "MIT",
+  "author": {
+    "name": "Ilker Kilic",
+    "email": "ilkrklc@gmail.com"
   },
+  "homepage": "https://github.com/ilkrklc/cdk-cloudfront-geo-locator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ilkrklc/cdk-cloudfront-geo-locator"
+  },
+  "bugs": {
+    "url": "https://github.com/ilkrklc/cdk-cloudfront-geo-locator/issues"
+  },
+  "keywords": [
+    "aws",
+    "cdk",
+    "awscdk",
+    "aws-cdk",
+    "aws-cdk-construct",
+    "cloudfront",
+    "cloudformation",
+    "cloudformation-custom-resource",
+    "geolocation"
+  ],
+  "stability": "experimental",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc -w",
-    "test": "jest",
-    "cdk": "cdk"
+    "build": "jsii -v",
+    "build:watch": "jsii -w",
+    "test:synth": "cdk synth --app \"npx ts-node test/bin/test.ts\" TestStack --require-approval never",
+    "test:deploy": "cdk deploy --app \"npx ts-node test/bin/test.ts\" TestStack --require-approval never",
+    "test:destroy": "cdk destroy --app \"npx ts-node test/bin/test.ts\" TestStack --force",
+    "prepackage": "npm run build && npm run build --prefix lambda",
+    "package": "jsii-pacmak -v",
+    "publish": "publib"
+  },
+  "jsii": {
+    "outdir": "dist",
+    "versionFormat": "short",
+    "excludeTypescript": [
+      "lambda"
+    ],
+    "targets": {
+      "java": {
+        "package": "cdk.cloudfront.geo.locator",
+        "maven": {
+          "groupId": "cdk.cloudfront.geo.locator",
+          "artifactId": "cdk.cloudfront.geo.locator"
+        }
+      },
+      "python": {
+        "distName": "cdk-cloudfront-geo-locator",
+        "module": "cdk_cloudfront_geo_locator"
+      },
+      "dotnet": {
+        "namespace": "CDK.CloudFront.Geo.Locator",
+        "packageId": "CDK.CloudFront.Geo.Locator"
+      },
+      "go": {
+        "moduleName": "github.com/ilkrklc/cdk-cloudfront-geo-locator",
+        "packageName": "cdkcloudfrontgeolocator"
+      }
+    }
+  },
+  "peerDependencies": {
+    "aws-cdk-lib": "2.117.0",
+    "constructs": "^10.0.0"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.11",
     "@types/node": "20.10.4",
-    "jest": "^29.7.0",
-    "ts-jest": "^29.1.1",
-    "aws-cdk": "2.117.0",
+    "aws-cdk-lib": "2.117.0",
+    "constructs": "10.0.0",
+    "jsii": "^5.3.1",
+    "jsii-pacmak": "^1.93.0",
+    "publib": "^0.2.767",
     "ts-node": "^10.9.2",
     "typescript": "~5.3.3"
-  },
-  "dependencies": {
-    "aws-cdk-lib": "2.117.0",
-    "constructs": "^10.0.0",
-    "source-map-support": "^0.5.21"
   }
 }

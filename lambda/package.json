@@ -1,0 +1,15 @@
+{
+  "name": "cdk-cloudfront-geo-locator-lambda",
+  "version": "1.0.0",
+  "description": "An AWS Lambda function to get requestor geolocation information.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "postbuild": "cd dist && zip ../../lib/lambda.zip index.js"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.130",
+    "@types/node": "^20.10.5",
+    "typescript": "^5.3.3"
+  }
+}

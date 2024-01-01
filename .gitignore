@@ -1,8 +1,24 @@
-*.js
-!jest.config.js
-*.d.ts
-node_modules
+# misc
+.DS_Store
 
-# CDK asset staging directory
-.cdk.staging
-cdk.out
+# dependencies
+**/node_modules
+
+# jsii output
+.jsii
+/tsconfig.json
+tsconfig.tsbuildinfo
+/dist
+
+# lambda function output
+lib/lambda.zip
+lambda/dist
+
+# typescript build output
+**/*.js
+**/*.d.ts
+
+# cdk related files
+**/.cdk.staging
+**/cdk.out
+**/cdk.context.json

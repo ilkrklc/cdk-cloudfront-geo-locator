@@ -1,6 +1,24 @@
+# Exclude typescript source and config
 *.ts
+tsconfig.json
+
+# Include javascript files and typescript declarations
+!*.js
 !*.d.ts
 
 # CDK asset staging directory
-.cdk.staging
-cdk.out
+**/.cdk.staging
+**/cdk.out
+cdk.json
+
+# Include .jsii
+!.jsii
+
+# Exclude jsii outdir
+dist
+
+# Exclude lambda src folder
+lambda
+
+# Exclude test folder
+test
