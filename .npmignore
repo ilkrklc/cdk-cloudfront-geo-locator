@@ -22,3 +22,6 @@ lambda
 
 # Exclude test folder
 test
+
+# Exclude .github folder
+.github
