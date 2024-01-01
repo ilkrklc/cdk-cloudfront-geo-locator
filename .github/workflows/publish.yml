@@ -41,6 +41,4 @@ jobs:
           MAVEN_STAGING_PROFILE_ID: ${{ secrets.MAVEN_STAGING_PROFILE_ID }}
           MAVEN_ENDPOINT: https://s01.oss.sonatype.org
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-          TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
-          TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
