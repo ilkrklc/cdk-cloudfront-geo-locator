@@ -1,7 +1,7 @@
 {
   "name": "cdk-cloudfront-geo-locator",
   "description": "An AWS CDK construct to create a CloudFront-powered HTTP endpoint delivering requestor's geolocation details.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "author": {
     "name": "Ilker Kilic",
