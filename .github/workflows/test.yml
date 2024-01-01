@@ -44,5 +44,5 @@ jobs:
       - name: Install Global CDK Dependencies
         run: npm install -g aws-cdk
 
-      - name: CDK Deploy
+      - name: CDK Synth
         run: npm run test:synth
