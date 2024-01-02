@@ -17,11 +17,14 @@ cdk.json
 # Exclude jsii outdir
 dist
 
-# Exclude lambda src folder
+# Exclude lambda src directory
 lambda
 
-# Exclude test folder
+# Exclude test directory
 test
 
-# Exclude .github folder
+# Exclude .github directory
 .github
+
+# Exclude go module directory
+cdkcloudfrontgeolocator
