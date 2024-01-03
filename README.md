@@ -7,6 +7,7 @@ The `CloudfrontGeoLocator` is an AWS CDK construct that automates the setup of a
 - [Installation](#installation)
 - [Usage](#usage)
 - [Documentation](#documentation)
+- [Geolocation Endpoint Response](#geolocation-endpoint-response)
 - [Contributing](#contributing)
 - [Pull Request Guidelines](#pull-request-guidelines)
 - [License](#license)
@@ -127,6 +128,20 @@ export interface CloudfrontGeoLocatorProps extends ResourceProps {
      */
     readonly certificateArn: string;
   };
+}
+```
+
+## Geolocation Endpoint Response
+
+The geolocation endpoint returns a JSON object with the following properties:
+
+```json
+{
+  "country": "TR",
+  "countryName": "Türkiye",
+  "countryRegion": "35",
+  "countryRegionName": "Izmir",
+  "city": "Izmir"
 }
 ```
 
