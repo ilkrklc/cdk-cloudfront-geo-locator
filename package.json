@@ -27,7 +27,7 @@
     "cloudformation-custom-resource",
     "geolocation"
   ],
-  "stability": "experimental",
+  "stability": "stable",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
