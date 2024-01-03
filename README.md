@@ -52,11 +52,9 @@ const customDomainGeoLocator = new CloudfrontGeoLocator(
   this,
   'CustomDomainGeoLocator',
   {
-    customDomain: {
-      domainName: 'example.com',
-      certificateArn:
-        'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012',
-    },
+    customDomainName: 'example.com',
+    customDomainCertificateArn:
+      'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012',
   }
 );
 
@@ -115,21 +113,18 @@ export interface CloudfrontGeoLocatorProps extends ResourceProps {
   readonly cloudfrontPriceClass?: cloudfront.PriceClass;
 
   /**
-   * The domain name and certificate arn configuration for the CloudFront distribution.
+   * The domain name for the CloudFront distribution.
    *
    * @default - undefined
    */
-  readonly customDomain?: {
-    /**
-     * The domain name for the CloudFront distribution.
-     */
-    readonly domainName: string;
+  readonly customDomainName?: string;
 
-    /**
-     * The ARN of the certificate.
-     */
-    readonly certificateArn: string;
-  };
+  /**
+   * The ARN of the certificate.
+   *
+   * @default - undefined
+   */
+  readonly customDomainCertificateArn?: string;
 }
 ```
 

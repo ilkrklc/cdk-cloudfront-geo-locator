@@ -48,21 +48,18 @@ export interface CloudfrontGeoLocatorProps extends ResourceProps {
   readonly cloudfrontPriceClass?: cloudfront.PriceClass;
 
   /**
-   * The domain name and certificate arn configuration for the CloudFront distribution.
+   * The domain name for the CloudFront distribution.
    *
    * @default - undefined
    */
-  readonly customDomain?: {
-    /**
-     * The domain name for the CloudFront distribution.
-     */
-    readonly domainName: string;
+  readonly customDomainName?: string;
 
-    /**
-     * The ARN of the certificate.
-     */
-    readonly certificateArn: string;
-  };
+  /**
+   * The ARN of the certificate.
+   *
+   * @default - undefined
+   */
+  readonly customDomainCertificateArn?: string;
 }
 
 export class CloudfrontGeoLocator extends Construct {
@@ -219,6 +216,29 @@ export class CloudfrontGeoLocator extends Construct {
     readonly originRequestPolicy: cloudfront.OriginRequestPolicy;
     readonly originAccessIdentity: cloudfront.OriginAccessIdentity;
   }): cloudfront.Distribution {
+    let customDomain: {
+      domainNames?: string[];
+      certificate?: acm.ICertificate;
+    } = {};
+    if (props.customDomainName && props.customDomainCertificateArn) {
+      customDomain = {
+        domainNames: [props.customDomainName],
+        certificate: acm.Certificate.fromCertificateArn(
+          this,
+          'CloudfrontGeoLocatorCertificate',
+          props.customDomainCertificateArn
+        ),
+      };
+    } else if (!props.customDomainName) {
+      console.warn(
+        `Both customDomainName and customDomainCertificateArn are required to use a custom domain. Bypassing custom domain...`
+      );
+    } else if (!props.customDomainCertificateArn) {
+      console.warn(
+        `Both customDomainName and customDomainCertificateArn are required to use a custom domain. Bypassing custom domain...`
+      );
+    }
+
     return new cloudfront.Distribution(
       this,
       'CloudfrontGeoLocatorDistribution',
@@ -253,14 +273,8 @@ export class CloudfrontGeoLocator extends Construct {
             responsePagePath: '/404',
           },
         ],
-        ...(props.customDomain && {
-          domainNames: [props.customDomain.domainName],
-          certificate: acm.Certificate.fromCertificateArn(
-            this,
-            'CloudfrontGeoLocatorCertificate',
-            props.customDomain.certificateArn
-          ),
-        }),
+        domainNames: customDomain.domainNames,
+        certificate: customDomain.certificate,
       }
     );
   }
