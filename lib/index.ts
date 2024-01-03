@@ -1,4 +1,5 @@
 import { Duration, ResourceProps } from 'aws-cdk-lib';
+import * as acm from 'aws-cdk-lib/aws-certificatemanager';
 import * as cloudfront from 'aws-cdk-lib/aws-cloudfront';
 import * as cloudfrontOrigins from 'aws-cdk-lib/aws-cloudfront-origins';
 import * as iam from 'aws-cdk-lib/aws-iam';
@@ -45,6 +46,23 @@ export interface CloudfrontGeoLocatorProps extends ResourceProps {
    * @default - PRICE_CLASS_100
    */
   readonly cloudfrontPriceClass?: cloudfront.PriceClass;
+
+  /**
+   * The domain name and certificate arn configuration for the CloudFront distribution.
+   *
+   * @default - undefined
+   */
+  readonly customDomain?: {
+    /**
+     * The domain name for the CloudFront distribution.
+     */
+    readonly domainName: string;
+
+    /**
+     * The ARN of the certificate.
+     */
+    readonly certificateArn: string;
+  };
 }
 
 export class CloudfrontGeoLocator extends Construct {
@@ -235,6 +253,14 @@ export class CloudfrontGeoLocator extends Construct {
             responsePagePath: '/404',
           },
         ],
+        ...(props.customDomain && {
+          domainNames: [props.customDomain.domainName],
+          certificate: acm.Certificate.fromCertificateArn(
+            this,
+            'CloudfrontGeoLocatorCertificate',
+            props.customDomain.certificateArn
+          ),
+        }),
       }
     );
   }

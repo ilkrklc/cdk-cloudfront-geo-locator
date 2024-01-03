@@ -44,6 +44,19 @@ const geoLocatorWithProps = new CloudfrontGeoLocator(
   }
 );
 
+// stack initialization with custom domain
+const customDomainGeoLocator = new CloudfrontGeoLocator(
+  this,
+  'CustomDomainGeoLocator',
+  {
+    customDomain: {
+      domainName: 'example.com',
+      certificateArn:
+        'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012',
+    },
+  }
+);
+
 // exported properties
 console.log(geoLocator.s3BucketArn); // The ARN of the S3 bucket.
 console.log(geoLocator.lambdaFunctionArn); // The ARN of the Lambda function.
@@ -97,6 +110,23 @@ export interface CloudfrontGeoLocatorProps extends ResourceProps {
    * @default - PRICE_CLASS_100
    */
   readonly cloudfrontPriceClass?: cloudfront.PriceClass;
+
+  /**
+   * The domain name and certificate arn configuration for the CloudFront distribution.
+   *
+   * @default - undefined
+   */
+  readonly customDomain?: {
+    /**
+     * The domain name for the CloudFront distribution.
+     */
+    readonly domainName: string;
+
+    /**
+     * The ARN of the certificate.
+     */
+    readonly certificateArn: string;
+  };
 }
 ```
 
