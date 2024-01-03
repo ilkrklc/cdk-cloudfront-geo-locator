@@ -41,7 +41,8 @@
     "publish:npm": "publib-npm",
     "publish:maven": "publib-maven",
     "publish:nuget": "publib-nuget",
-    "publish:golang": "publib-golang"
+    "publish:golang": "publib-golang",
+    "publish:pypi": "publib-pypi"
   },
   "jsii": {
     "outdir": "dist",
