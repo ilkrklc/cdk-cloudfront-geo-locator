@@ -9,35 +9,25 @@ import (
 	"github.com/ilkrklc/cdk-cloudfront-geo-locator/cdkcloudfrontgeolocator/internal"
 )
 
-// Experimental.
 type CloudfrontGeoLocator interface {
 	constructs.Construct
 	// The ID of the CloudFront cache policy.
-	// Experimental.
 	CloudfrontCachePolicyId() *string
 	// The ID of the CloudFront origin request policy.
-	// Experimental.
 	CloudfrontOriginRequestPolicyId() *string
 	// The domain name of the CloudFront distribution.
-	// Experimental.
 	DistributionDomainName() *string
 	// The ID of the CloudFront distribution.
-	// Experimental.
 	DistributionId() *string
 	// The ARN of the Lambda function.
-	// Experimental.
 	LambdaFunctionArn() *string
 	// The current version of the Lambda function.
-	// Experimental.
 	LambdaFunctionVersion() awslambda.Version
 	// The tree node.
-	// Experimental.
 	Node() constructs.Node
 	// The ARN of the S3 bucket.
-	// Experimental.
 	S3BucketArn() *string
 	// Returns a string representation of this construct.
-	// Experimental.
 	ToString() *string
 }
 
@@ -127,7 +117,6 @@ func (j *jsiiProxy_CloudfrontGeoLocator) S3BucketArn() *string {
 }
 
 
-// Experimental.
 func NewCloudfrontGeoLocator(scope constructs.Construct, id *string, props *CloudfrontGeoLocatorProps) CloudfrontGeoLocator {
 	_init_.Initialize()
 
@@ -145,7 +134,6 @@ func NewCloudfrontGeoLocator(scope constructs.Construct, id *string, props *Clou
 	return &j
 }
 
-// Experimental.
 func NewCloudfrontGeoLocator_Override(c CloudfrontGeoLocator, scope constructs.Construct, id *string, props *CloudfrontGeoLocatorProps) {
 	_init_.Initialize()
 
