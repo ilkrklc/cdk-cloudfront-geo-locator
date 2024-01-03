@@ -53,6 +53,16 @@ type CloudfrontGeoLocatorProps struct {
 	//
 	// Experimental.
 	CloudfrontPriceClass awscloudfront.PriceClass `field:"optional" json:"cloudfrontPriceClass" yaml:"cloudfrontPriceClass"`
+	// The ARN of the certificate.
+	// Default: - undefined.
+	//
+	// Experimental.
+	CustomDomainCertificateArn *string `field:"optional" json:"customDomainCertificateArn" yaml:"customDomainCertificateArn"`
+	// The domain name for the CloudFront distribution.
+	// Default: - undefined.
+	//
+	// Experimental.
+	CustomDomainName *string `field:"optional" json:"customDomainName" yaml:"customDomainName"`
 	// A unique name to identify the lambda function.
 	// Default: - cloudfront-geo-locator.
 	//

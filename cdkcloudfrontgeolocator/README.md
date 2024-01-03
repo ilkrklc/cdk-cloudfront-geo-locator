@@ -1,4 +1,6 @@
-# CloudfrontGeoLocator ![GitHub](https://img.shields.io/github/license/ilkrklc/cdk-cloudfront-geo-locator) ![npm version](https://img.shields.io/npm/v/cdk-cloudfront-geo-locator)
+# CloudfrontGeoLocator
+
+![GitHub](https://img.shields.io/github/license/ilkrklc/cdk-cloudfront-geo-locator) ![npm version](https://img.shields.io/npm/v/cdk-cloudfront-geo-locator) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ilkrklc/cdk.cloudfront.geo.locator/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.ilkrklc/cdk.cloudfront.geo.locator) [![NuGet latest version](https://badgen.net/nuget/v/CDK.CloudFront.Geo.Locator/latest)](https://nuget.org/packages/CDK.CloudFront.Geo.Locator) [![PyPi version](https://badgen.net/pypi/v/cdk-cloudfront-geo-locator/)](https://pypi.org/project/cdk-cloudfront-geo-locator) [![Go Reference](https://pkg.go.dev/badge/github.com/ilkrklc/cdk-cloudfront-geo-locator/cdkcloudfrontgeolocator.svg)](https://pkg.go.dev/github.com/ilkrklc/cdk-cloudfront-geo-locator/cdkcloudfrontgeolocator)
 
 The `CloudfrontGeoLocator` is an AWS CDK construct that automates the setup of a CloudFront distribution with an Origin Request Lambda function, enabling applications to determine the geolocation of their users based on incoming HTTP requests. It's an ideal solution for developers looking to enhance their cloud applications with geolocation awareness without delving into the complexities of AWS configurations.
 
@@ -7,6 +9,7 @@ The `CloudfrontGeoLocator` is an AWS CDK construct that automates the setup of a
 * [Installation](#installation)
 * [Usage](#usage)
 * [Documentation](#documentation)
+* [Geolocation Endpoint Response](#geolocation-endpoint-response)
 * [Contributing](#contributing)
 * [Pull Request Guidelines](#pull-request-guidelines)
 * [License](#license)
@@ -41,6 +44,17 @@ const geoLocatorWithProps = new CloudfrontGeoLocator(
     cloudfrontCachePolicyName: 'cloudfront-cache-policy-name', // optional
     cloudfrontOriginRequestPolicyName: 'cloudfront-origin-request-policy-name', // optional
     cloudfrontPriceClass: cloudfront.PriceClass.PRICE_CLASS_100, // optional
+  }
+);
+
+// stack initialization with custom domain
+const customDomainGeoLocator = new CloudfrontGeoLocator(
+  this,
+  'CustomDomainGeoLocator',
+  {
+    customDomainName: 'example.com',
+    customDomainCertificateArn:
+      'arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012',
   }
 );
 
@@ -97,6 +111,34 @@ export interface CloudfrontGeoLocatorProps extends ResourceProps {
    * @default - PRICE_CLASS_100
    */
   readonly cloudfrontPriceClass?: cloudfront.PriceClass;
+
+  /**
+   * The domain name for the CloudFront distribution.
+   *
+   * @default - undefined
+   */
+  readonly customDomainName?: string;
+
+  /**
+   * The ARN of the certificate.
+   *
+   * @default - undefined
+   */
+  readonly customDomainCertificateArn?: string;
+}
+```
+
+## Geolocation Endpoint Response
+
+The geolocation endpoint returns a JSON object with the following properties:
+
+```json
+{
+  "country": "TR",
+  "countryName": "Türkiye",
+  "countryRegion": "35",
+  "countryRegionName": "Izmir",
+  "city": "Izmir"
 }
 ```
 
