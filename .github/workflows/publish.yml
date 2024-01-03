@@ -62,5 +62,5 @@ jobs:
       - name: Publish to PyPI
         run: npm run publish:pypi
         env:
-          TWINE_USERNAME: ilkrklc
+          TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
